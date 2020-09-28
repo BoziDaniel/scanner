@@ -1,41 +1,60 @@
 import React, { useEffect, useState } from "react";
 import BarcodeScannerComponent from "react-webcam-barcode-scanner";
 const Scanner = () => {
-  const [data, setData] = useState("Not Found");
-  const [proposedData, setPropsedData] = useState([]);
+  const [barCode, setBarCode] = useState("");
+  const [data, setData] = useState([
+    { id: 1231312, quantity: 1 },
+    { id: 131241512, quantity: 2 },
+  ]);
+  const [proposedData, setPropsedData] = useState("");
+
   useEffect(() => {
-    if (data === "Not Found") {
-      // let Obj = { id: proposedData, quantity: 1 };
-      if (data === "Not Found") {
-
-
+    if (barCode === "Not Found") {
+      if (proposedData !== "") {
+        let entry = { id: proposedData, quantity: 1 };
+        let found = false;
+        for (let singleData of data) {
+          if (singleData.id === proposedData) {
+            singleData.quantity += 1;
+            if (singleData.quantity < 3) {
+              setBarCode(singleData.id);
+            }
+            found = true;
+            break;
+          }
+        }
+        if (found === false) {
+          setData(...entry);
+        }
+        // found = false;
       }
-    // console.log(proposedData);
-    // if (data !== "Not Found") {
-    //   let Obj = { id: data, quantity: 1 };
-    //   if (proposedData === undefined) {
-    //     setPropsedData([Obj]);
-    //   } else {
-    //     let found = false;
-    //     let index = 0;
-    //     for (let singleData of proposedData) {
-    //       if (singleData.id === data) {
-    //         found = true;
-    //         break;
-    //       }
-    //       index++;
-    //     }
-    //     if (found) {
-    //       proposedData[index].quantity++;
-    //       setPropsedData(proposedData);
-    //     } else {
-    //       proposedData.push(Obj);
-    //       setPropsedData(proposedData);
-    //     }
-    //   }
-    //   console.log(proposedData);
-    // }
-  }, [data, proposedData]);
+      // console.log(proposedData);
+      // if (data !== "Not Found") {
+      //   let Obj = { id: data, quantity: 1 };
+      //   if (proposedData === undefined) {
+      //     setPropsedData([Obj]);
+      //   } else {
+      //     let found = false;
+      //     let index = 0;
+      //     for (let singleData of proposedData) {
+      //       if (singleData.id === data) {
+      //         found = true;
+      //         break;
+      //       }
+      //       index++;
+      //     }
+      //     if (found) {
+      //       proposedData[index].quantity++;
+      //       setPropsedData(proposedData);
+      //     } else {
+      //       proposedData.push(Obj);
+      //       setPropsedData(proposedData);
+      //     }
+      //   }
+      //   console.log(proposedData);
+      // }
+    }
+  }, [barCode, data, proposedData]);
   return (
     <div style={{ background: "white" }}>
       <BarcodeScannerComponent
@@ -43,11 +62,20 @@ const Scanner = () => {
         height={500}
         onUpdate={(err, result) => {
           if (result) setPropsedData(result.text);
-          else setData("Not Found");
+          else setBarCode("Not Found");
         }}
       />
       <p>proposed Data: {proposedData}</p>
-      <p>data: {data}</p>
+      <div>
+        data:{" "}
+        {data.map((item) => (
+          <div key={item.id}>
+            <p>{item.id}</p>
+            <div>{item.quantity}</div>
+          </div>
+        ))}
+      </div>
+      <p>barcode: {barCode}</p>
     </div>
   );
 };
