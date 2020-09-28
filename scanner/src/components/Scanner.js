@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import BarcodeScannerComponent from "react-webcam-barcode-scanner";
 const Scanner = () => {
   const [barCode, setBarCode] = useState("");
@@ -7,55 +7,53 @@ const Scanner = () => {
     // { id: 131241512, quantity: 2 },
   ]);
   const [proposedData, setPropsedData] = useState("");
-
-  useEffect(() => {
-    if (barCode === "Not Found") {
-      if (proposedData !== "") {
-        let entry = { id: proposedData, quantity: 1 };
-        let found = false;
-        for (let singleData of data) {
-          if (singleData.id === proposedData) {
-            singleData.quantity += 1;
-            if (singleData.quantity < 3) {
-              setBarCode(singleData.id);
-              setData([]);
-              setPropsedData("");
-            }
-            found = true;
-          }
+  if (barCode === "Not Found") {
+    let obj = { id: proposedData, quantity: 1 };
+    let found = false;
+    for (let i = 0; i < data.length; i++) {
+      alert(data[i].id, data[i].quantity);
+      if (data[i].id === proposedData) {
+        data[i].quantity++;
+        setData(data);
+        if (data[i].quantity > 3) {
+          setBarCode(data[i].id);
         }
-        if (found === false) {
-          setData(...entry);
-        }
-        // found = false;
+        found = true;
+        break;
       }
-      // console.log(proposedData);
-      // if (data !== "Not Found") {
-      //   let Obj = { id: data, quantity: 1 };
-      //   if (proposedData === undefined) {
-      //     setPropsedData([Obj]);
-      //   } else {
-      //     let found = false;
-      //     let index = 0;
-      //     for (let singleData of proposedData) {
-      //       if (singleData.id === data) {
-      //         found = true;
-      //         break;
-      //       }
-      //       index++;
-      //     }
-      //     if (found) {
-      //       proposedData[index].quantity++;
-      //       setPropsedData(proposedData);
-      //     } else {
-      //       proposedData.push(Obj);
-      //       setPropsedData(proposedData);
-      //     }
-      //   }
-      //   console.log(proposedData);
-      // }
     }
-  }, [barCode, data, proposedData]);
+    if (!found) {
+      data.push(obj);
+    }
+    found = false;
+  }
+
+  // console.log(proposedData);
+  // if (data !== "Not Found") {
+  //   let Obj = { id: data, quantity: 1 };
+  //   if (proposedData === undefined) {
+  //     setPropsedData([Obj]);
+  //   } else {
+  //     let found = false;
+  //     let index = 0;
+  //     for (let singleData of proposedData) {
+  //       if (singleData.id === data) {
+  //         found = true;
+  //         break;
+  //       }
+  //       index++;
+  //     }
+  //     if (found) {
+  //       proposedData[index].quantity++;
+  //       setPropsedData(proposedData);
+  //     } else {
+  //       proposedData.push(Obj);
+  //       setPropsedData(proposedData);
+  //     }
+  //   }
+  //   console.log(proposedData);
+  // }
+
   return (
     <div style={{ background: "white" }}>
       <BarcodeScannerComponent
