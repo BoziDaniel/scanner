@@ -7,12 +7,12 @@ const Scanner = () => {
     // { id: 1231312, quantity: 1 },
     // { id: 131241512, quantity: 2 },
   ]);
-  const [proposedData, setPropsedData] = useState("");
+  const [proposedData, setPropsedData] = useState("Not Found");
 
-  if (barCode === "Not Found") {
+  if (barCode === "") {
     let obj = { id: proposedData, quantity: 1 };
     let found = false;
-    if (proposedData !== undefined) {
+    if (proposedData !== "Not Found") {
       alert(proposedData);
       for (let i = 0; i < data.length; i++) {
         if (data[i].id === proposedData) {
@@ -72,7 +72,7 @@ const Scanner = () => {
         height={500}
         onUpdate={(err, result) => {
           if (result) setPropsedData(result.text);
-          else setPropsedData("");
+          else setPropsedData("Not Found");
         }}
       />
       <p>proposed Data: {proposedData}</p>
