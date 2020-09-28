@@ -18,6 +18,8 @@ const Scanner = () => {
             singleData.quantity += 1;
             if (singleData.quantity < 3) {
               setBarCode(singleData.id);
+              setData([]);
+              setPropsedData("");
             }
             found = true;
             break;
@@ -67,7 +69,6 @@ const Scanner = () => {
       />
       <p>proposed Data: {proposedData}</p>
       <div>
-        data:{" "}
         {data.map((item) => (
           <div key={item.id}>
             <p>{item.id}</p>
