@@ -71,7 +71,7 @@ const Scanner = () => {
         height={500}
         onUpdate={(err, result) => {
           if (result) setPropsedData(result.text);
-          else setBarCode("Not Found");
+          else setPropsedData("Not Found");
         }}
       />
       <p>proposed Data: {proposedData}</p>
