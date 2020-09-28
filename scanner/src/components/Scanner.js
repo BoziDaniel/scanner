@@ -13,7 +13,7 @@ const Scanner = () => {
     let found = false;
     if (proposedData !== "Not Found") {
       for (let i = 0; i < data.length; i++) {
-        alert(data[i].id, data.quantity);
+        alert(data[i].id);
         if (data[i].id === proposedData) {
           data[i].quantity++;
           setData(data);
