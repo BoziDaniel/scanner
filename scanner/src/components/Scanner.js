@@ -8,9 +8,9 @@ const Scanner = () => {
   ]);
   const [proposedData, setPropsedData] = useState("");
   if (barCode === "Not Found") {
+    let obj = { id: proposedData, quantity: 1 };
+    let found = false;
     if (proposedData !== "") {
-      let obj = { id: proposedData, quantity: 1 };
-      let found = false;
       for (let i = 0; i < data.length; i++) {
         alert(data[i].id, data.quantity);
         if (data[i].id === proposedData) {
