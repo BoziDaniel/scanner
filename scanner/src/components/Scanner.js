@@ -4,14 +4,15 @@ const Scanner = () => {
   // const [refresh, setRefresh] = useState(false);
   const [barCode, setBarCode] = useState("");
   const [data, setData] = useState([
-    { id: 1231312, quantity: 1 },
-    { id: 131241512, quantity: 2 },
+    // { id: 1231312, quantity: 1 },
+    // { id: 131241512, quantity: 2 },
   ]);
   const [proposedData, setPropsedData] = useState("");
+
   if (barCode === "Not Found") {
     let obj = { id: proposedData, quantity: 1 };
     let found = false;
-    if (proposedData !== "Not Found") {
+    if (proposedData !== "") {
       alert(proposedData);
       for (let i = 0; i < data.length; i++) {
         if (data[i].id === proposedData) {
@@ -71,7 +72,7 @@ const Scanner = () => {
         height={500}
         onUpdate={(err, result) => {
           if (result) setPropsedData(result.text);
-          else setPropsedData("Not Found");
+          else setPropsedData("");
         }}
       />
       <p>proposed Data: {proposedData}</p>
