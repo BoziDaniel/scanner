@@ -1,12 +1,8 @@
 import React, { useState } from "react";
 import BarcodeScannerComponent from "react-webcam-barcode-scanner";
 const Scanner = () => {
-  // const [refresh, setRefresh] = useState(false);
   const [barCode, setBarCode] = useState("");
-  const [data, setData] = useState([
-    // { id: 1231312, quantity: 1 },
-    // { id: 131241512, quantity: 2 },
-  ]);
+  const [data, setData] = useState([]);
   const [proposedData, setPropsedData] = useState("Not Found");
 
   if (barCode === "") {
@@ -17,9 +13,9 @@ const Scanner = () => {
         if (data[i].id === proposedData) {
           data[i].quantity++;
           setData(data);
-          if (data[i].quantity > 8) {
+          if (data[i].quantity > 3) {
             setBarCode(data[i].id);
-            alert("ENGLAAAAAND!");
+            alert("Your barcode is: " + { barCode });
           }
           found = true;
           break;
@@ -30,44 +26,10 @@ const Scanner = () => {
         setData(data);
       }
       setPropsedData("Not Found");
-
     }
 
     found = false;
-    // setPropsedData("Not Found");
   }
-  // const handleClick = () => {
-  //   setRefresh(true);
-  // };
-  // useEffect(() => {
-  //   alert("refresh");
-  //   setRefresh(false);
-  // }, [refresh]);
-  // console.log(proposedData);
-  // if (data !== "Not Found") {
-  //   let Obj = { id: data, quantity: 1 };
-  //   if (proposedData === undefined) {
-  //     setPropsedData([Obj]);
-  //   } else {
-  //     let found = false;
-  //     let index = 0;
-  //     for (let singleData of proposedData) {
-  //       if (singleData.id === data) {
-  //         found = true;
-  //         break;
-  //       }
-  //       index++;
-  //     }
-  //     if (found) {
-  //       proposedData[index].quantity++;
-  //       setPropsedData(proposedData);
-  //     } else {
-  //       proposedData.push(Obj);
-  //       setPropsedData(proposedData);
-  //     }
-  //   }
-  //   console.log(proposedData);
-  // }
 
   return (
     <div style={{ background: "white" }}>
@@ -89,7 +51,6 @@ const Scanner = () => {
         ))}
       </div>
       <p>barcode: {barCode}</p>
-      {/* <button onClick={handleClick()}>Refresh</button> */}
     </div>
   );
 };
