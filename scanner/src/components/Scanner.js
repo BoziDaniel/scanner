@@ -11,7 +11,7 @@ const Scanner = () => {
     let obj = { id: proposedData, quantity: 1 };
     let found = false;
     for (let i = 0; i < data.length; i++) {
-      alert(data[i].id, data[i].quantity);
+      alert(data[i].id);
       if (data[i].id === proposedData) {
         data[i].quantity++;
         setData(data);
