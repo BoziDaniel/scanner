@@ -13,7 +13,6 @@ const Scanner = () => {
     let obj = { id: proposedData, quantity: 1 };
     let found = false;
     if (proposedData !== "Not Found") {
-      alert(proposedData);
       for (let i = 0; i < data.length; i++) {
         if (data[i].id === proposedData) {
           data[i].quantity++;
@@ -27,11 +26,12 @@ const Scanner = () => {
       }
       if (!found) {
         data.push(obj);
+        setData(data);
       }
     }
 
     found = false;
-    setPropsedData("");
+    // setPropsedData("Not Found");
   }
   // const handleClick = () => {
   //   setRefresh(true);
