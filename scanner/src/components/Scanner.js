@@ -69,6 +69,7 @@ const Scanner = () => {
       <div>
         {data.map((item) => (
           <div key={item.id}>
+            <div>{item.id}</div>
             <div>{item.quantity}</div>
           </div>
         ))}
