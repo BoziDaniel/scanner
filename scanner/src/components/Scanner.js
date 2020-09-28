@@ -26,6 +26,7 @@ const Scanner = () => {
       data.push(obj);
     }
     found = false;
+    setPropsedData("");
   }
 
   // console.log(proposedData);
