@@ -15,7 +15,7 @@ const Scanner = () => {
           setData(data);
           if (data[i].quantity > 3) {
             setBarCode(data[i].id);
-            alert("Your barcode is: " + barCode);
+            alert("Your barcode is: " + { barCode });
           }
           found = true;
           break;
