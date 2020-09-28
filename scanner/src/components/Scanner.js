@@ -17,8 +17,9 @@ const Scanner = () => {
         if (data[i].id === proposedData) {
           data[i].quantity++;
           setData(data);
-          if (data[i].quantity > 3) {
+          if (data[i].quantity > 8) {
             setBarCode(data[i].id);
+            alert("ENGLAAAAAND!");
           }
           found = true;
           break;
@@ -31,14 +32,14 @@ const Scanner = () => {
     }
 
     found = false;
-    // setPropsedData("Not Found");
+    setPropsedData("Not Found");
   }
-  // const handleClick = () => {
-  //   setRefresh(true);
-  // };
-  // useEffect(() => {
-  //   alert("refresh");
-  // }, [refresh]);
+  const handleClick = () => {
+    setRefresh(true);
+  };
+  useEffect(() => {
+    alert("refresh");
+  }, [refresh]);
   // console.log(proposedData);
   // if (data !== "Not Found") {
   //   let Obj = { id: data, quantity: 1 };
@@ -85,7 +86,7 @@ const Scanner = () => {
         ))}
       </div>
       <p>barcode: {barCode}</p>
-      {/* <button onClick={handleClick}>Refresh</button> */}
+      <button onClick={handleClick}>Refresh</button>
     </div>
   );
 };
