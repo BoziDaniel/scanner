@@ -29,17 +29,20 @@ const Scanner = () => {
         data.push(obj);
         setData(data);
       }
+      setPropsedData("Not Found");
+
     }
 
     found = false;
-    setPropsedData("Not Found");
+    // setPropsedData("Not Found");
   }
-  const handleClick = () => {
-    setRefresh(true);
-  };
-  useEffect(() => {
-    alert("refresh");
-  }, [refresh]);
+  // const handleClick = () => {
+  //   setRefresh(true);
+  // };
+  // useEffect(() => {
+  //   alert("refresh");
+  //   setRefresh(false);
+  // }, [refresh]);
   // console.log(proposedData);
   // if (data !== "Not Found") {
   //   let Obj = { id: data, quantity: 1 };
@@ -86,7 +89,7 @@ const Scanner = () => {
         ))}
       </div>
       <p>barcode: {barCode}</p>
-      <button onClick={handleClick}>Refresh</button>
+      {/* <button onClick={handleClick()}>Refresh</button> */}
     </div>
   );
 };
