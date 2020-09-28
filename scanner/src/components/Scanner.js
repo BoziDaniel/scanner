@@ -5,7 +5,7 @@ const Scanner = () => {
   const [proposedData, setPropsedData] = useState([]);
   useEffect(() => {
     if (data === "Not Found") {
-      let Obj = { id: proposedData, quantity: 1 };
+      // let Obj = { id: proposedData, quantity: 1 };
       if (data === "Not Found") {
 
 
