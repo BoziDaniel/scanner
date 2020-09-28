@@ -3,8 +3,8 @@ import BarcodeScannerComponent from "react-webcam-barcode-scanner";
 const Scanner = () => {
   const [barCode, setBarCode] = useState("");
   const [data, setData] = useState([
-    { id: 1231312, quantity: 1 },
-    { id: 131241512, quantity: 2 },
+    // { id: 1231312, quantity: 1 },
+    // { id: 131241512, quantity: 2 },
   ]);
   const [proposedData, setPropsedData] = useState("");
 
@@ -71,7 +71,6 @@ const Scanner = () => {
       <div>
         {data.map((item) => (
           <div key={item.id}>
-            <p>{item.id}</p>
             <div>{item.quantity}</div>
           </div>
         ))}
