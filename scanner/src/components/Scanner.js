@@ -22,7 +22,6 @@ const Scanner = () => {
               setPropsedData("");
             }
             found = true;
-            break;
           }
         }
         if (found === false) {
