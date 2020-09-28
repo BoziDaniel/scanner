@@ -3,23 +3,25 @@ import BarcodeScannerComponent from "react-webcam-barcode-scanner";
 const Scanner = () => {
   const [barCode, setBarCode] = useState("");
   const [data, setData] = useState([
-    // { id: 1231312, quantity: 1 },
-    // { id: 131241512, quantity: 2 },
+    { id: 1231312, quantity: 1 },
+    { id: 131241512, quantity: 2 },
   ]);
   const [proposedData, setPropsedData] = useState("");
-  if (barCode === "Not Found" && proposedData !== "") {
-    let obj = { id: proposedData, quantity: 1 };
-    let found = false;
-    for (let i = 0; i < data.length; i++) {
-      alert(data[i].id);
-      if (data[i].id === proposedData) {
-        data[i].quantity++;
-        setData(data);
-        if (data[i].quantity > 3) {
-          setBarCode(data[i].id);
+  if (barCode === "Not Found") {
+    if (proposedData !== "") {
+      let obj = { id: proposedData, quantity: 1 };
+      let found = false;
+      for (let i = 0; i < data.length; i++) {
+        alert(data[i].id, data.quantity);
+        if (data[i].id === proposedData) {
+          data[i].quantity++;
+          setData(data);
+          if (data[i].quantity > 3) {
+            setBarCode(data[i].id);
+          }
+          found = true;
+          break;
         }
-        found = true;
-        break;
       }
     }
     if (!found) {
