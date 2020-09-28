@@ -6,6 +6,7 @@ const Scanner = () => {
   useEffect(() => {
     if (data === "Not Found") {
       let Obj = { id: proposedData, quantity: 1 };
+      console.log(obj);
     }
     // console.log(proposedData);
     // if (data !== "Not Found") {
