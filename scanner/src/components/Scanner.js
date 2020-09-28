@@ -6,8 +6,10 @@ const Scanner = () => {
   useEffect(() => {
     if (data === "Not Found") {
       let Obj = { id: proposedData, quantity: 1 };
-      console.log(Obj);
-    }
+      if (data === "Not Found") {
+
+
+      }
     // console.log(proposedData);
     // if (data !== "Not Found") {
     //   let Obj = { id: data, quantity: 1 };
@@ -37,8 +39,8 @@ const Scanner = () => {
   return (
     <div style={{ background: "white" }}>
       <BarcodeScannerComponent
-        width={300}
-        height={300}
+        width={500}
+        height={500}
         onUpdate={(err, result) => {
           if (result) setPropsedData(result.text);
           else setData("Not Found");
