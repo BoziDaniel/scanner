@@ -12,7 +12,7 @@ const Scanner = () => {
   if (barCode === "Not Found") {
     let obj = { id: proposedData, quantity: 1 };
     let found = false;
-    if (proposedData !== "") {
+    if (proposedData !== undefined) {
       alert(proposedData);
       for (let i = 0; i < data.length; i++) {
         if (data[i].id === proposedData) {
