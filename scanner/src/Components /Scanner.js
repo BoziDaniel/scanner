@@ -1,4 +1,4 @@
-import React, { useCallback, useLayoutEffect } from "react";
+import  { useCallback, useLayoutEffect } from "react";
 import PropTypes from "prop-types";
 import Quagga from "@ericblade/quagga2";
 
@@ -148,6 +148,7 @@ const Scanner = ({
       Quagga.offProcessed(handleProcessed);
       Quagga.stop();
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     cameraId,
     onDetected,
