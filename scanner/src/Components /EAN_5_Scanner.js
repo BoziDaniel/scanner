@@ -1,4 +1,4 @@
-import  { useCallback, useLayoutEffect} from "react";
+import { useCallback, useLayoutEffect } from "react";
 import PropTypes from "prop-types";
 import Quagga from "@ericblade/quagga2";
 
@@ -31,7 +31,7 @@ const defaultLocatorSettings = {
 
 const defaultDecoders = ["ean_reader"];
 
-const EAN_5_Scanner = ({
+const EAN_5_SCANNER = ({
   onDetected,
   scannerRef,
   onScannerReady,
@@ -144,16 +144,16 @@ const EAN_5_Scanner = ({
         }
       }
     );
-    Quagga.onDetected(function(result) {
+    Quagga.onDetected(function (result) {
       // This is the part where I could get the results
       console.log(result.codeResult.code);
-  });
+    });
     return () => {
       Quagga.offDetected(errorCheck);
       Quagga.offProcessed(handleProcessed);
       Quagga.stop();
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     cameraId,
     onDetected,
@@ -168,7 +168,7 @@ const EAN_5_Scanner = ({
   return null;
 };
 
-EAN_5_Scanner.propTypes = {
+EAN_5_SCANNER.propTypes = {
   onDetected: PropTypes.func.isRequired,
   scannerRef: PropTypes.object.isRequired,
   onScannerReady: PropTypes.func,
@@ -181,4 +181,4 @@ EAN_5_Scanner.propTypes = {
   locate: PropTypes.bool,
 };
 
-export default EAN_5_Scanner;
+export default EAN_5_SCANNER;

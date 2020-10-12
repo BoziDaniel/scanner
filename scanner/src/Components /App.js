@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import EAN_5_Scanner from './EAN_5_Scanner';
+import EAN_5_SCANNER from './EAN_5_Scanner';
 import Result from './Result';
 
 const App = () => {
@@ -23,7 +23,7 @@ const App = () => {
                     // width: '100%',
                     border: '3px solid green',
                 }} width="640" height="480" />
-                {scanning ? <EAN_5_Scanner scannerRef={scannerRef} onDetected={(result) => setResults([...results, result])} /> : null}
+                {scanning ? <EAN_5_SCANNER scannerRef={scannerRef} onDetected={(result) => setResults([...results, result])} /> : null}
             </div>
         </div>
     );
