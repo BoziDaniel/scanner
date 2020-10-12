@@ -1,4 +1,4 @@
-import  { useCallback, useLayoutEffect } from "react";
+import  { useCallback, useLayoutEffect, useState } from "react";
 import PropTypes from "prop-types";
 import Quagga from "@ericblade/quagga2";
 
@@ -56,6 +56,8 @@ const Scanner = ({
     },
     [onDetected]
   );
+
+  const [read, setRead] = useState("no read");
 
   const handleProcessed = (result) => {
     const drawingCtx = Quagga.canvas.ctx.overlay;
@@ -142,7 +144,10 @@ const Scanner = ({
         }
       }
     );
-    Quagga.onDetected(errorCheck);
+    Quagga.onDetected(function(result) {
+      // This is the part where I could get the results
+      console.log(result.codeResult.code);
+  });
     return () => {
       Quagga.offDetected(errorCheck);
       Quagga.offProcessed(handleProcessed);
