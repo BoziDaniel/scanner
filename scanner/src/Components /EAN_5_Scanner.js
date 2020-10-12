@@ -31,7 +31,7 @@ const defaultLocatorSettings = {
 
 const defaultDecoders = ["ean_reader"];
 
-const Scanner = ({
+const EAN_5_Scanner = ({
   onDetected,
   scannerRef,
   onScannerReady,
@@ -50,7 +50,7 @@ const Scanner = ({
       }
       const err = getMedianOfCodeErrors(result.codeResult.decodedCodes);
       // if Quagga is at least 75% certain that it read correctly, then accept the code.
-      if (err < 0.25) {
+      if (err < 0.1) {
         onDetected(result.codeResult.code);
       }
     },
@@ -168,7 +168,7 @@ const Scanner = ({
   return null;
 };
 
-Scanner.propTypes = {
+EAN_5_Scanner.propTypes = {
   onDetected: PropTypes.func.isRequired,
   scannerRef: PropTypes.object.isRequired,
   onScannerReady: PropTypes.func,
@@ -181,4 +181,4 @@ Scanner.propTypes = {
   locate: PropTypes.bool,
 };
 
-export default Scanner;
+export default EAN_5_Scanner;
