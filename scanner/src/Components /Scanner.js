@@ -57,7 +57,7 @@ const Scanner = ({
     [onDetected]
   );
 
-  const [read, setRead] = useState("no read");
+  // const [read, setRead] = useState("no read");
 
   const handleProcessed = (result) => {
     const drawingCtx = Quagga.canvas.ctx.overlay;
